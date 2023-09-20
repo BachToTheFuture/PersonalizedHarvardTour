@@ -29,6 +29,11 @@ h3 {
   margin-bottom: 20px;
   font-weight: 300;
 }
+.feedback-bar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
 
 /* Blur filter when modal is open */
 body.modal-open main {

@@ -39,7 +39,7 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="close-form" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button id="submit-form" type="button" class="btn btn-primary">Submit</button>
         </div>
       </div>
@@ -64,7 +64,12 @@
   </div>
 
   <main>
+    <!-- Nav bar -->
+    <div class="feedback-bar">
+      <a href="https://forms.gle/aQrJFKMYDu9QToT86"><button class="btn btn-secondary">Feedback</button></a>
+    </div>
 
+    <!-- Main image -->
     <img id='hero-img' src="https://www.harvard.edu/wp-content/uploads/2021/02/091520_Stock_KS_025-1200x630.jpeg">
     <section class="py-5 text-center container">
       <div class="row py-lg-5">
@@ -82,9 +87,17 @@
       </div>
 
       <div class="album py-5 bg-body-tertiary">
-        <h3> Nearby stops </h3>
+        <h3> Next stops </h3>
         <div class="container">
           <div id="destinations" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          </div>
+        </div>
+      </div>
+
+      <div class="album py-5 bg-body-secondary">
+        <h3> You've already been to </h3>
+        <div class="container">
+          <div id="visited" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           </div>
         </div>
       </div>

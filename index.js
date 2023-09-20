@@ -3,12 +3,16 @@
 const urlParams = new URLSearchParams(window.location.search);
 const dest = urlParams.get('dest');
 const key = 'hpt-pref';
-let userPref = [];
 
 // Check if the user has been here before:
 $(document).ready(function () {
+  let userPref = [];
+  let userVisited = [];
+
   if (localStorage.getItem(key)) {
-    userPref = JSON.parse(localStorage.getItem(key));
+    let data = JSON.parse(localStorage.getItem(key));
+    userPref = data.pref || [];
+    userVisited = data.visited || [];
   }
   else {
     // Update preference form
@@ -29,16 +33,31 @@ $(document).ready(function () {
         }
       });
       // Store in browser
-      localStorage.setItem(key, JSON.stringify(pref));
+      localStorage.setItem(key, JSON.stringify({
+        pref: userPref,
+        visited: userVisited
+      }));
       userPref = pref;
       updatePage(dest, userPref);
       $('#form').modal('hide');
+    });
+    
+    $('#close-form').click(() => {
+      // Show everything if the user does not click on anything.
+      userPref = categories;
     });
   }
 
   // Check if this is a valid link
   if (dest && data[dest]) {
-    updatePage(dest, userPref);
+    // Add to visited
+    userVisited.push(dest);
+    localStorage.setItem(key, JSON.stringify({
+      pref: userPref,
+      visited: userVisited
+    }));
+    print("Visited")
+    updatePage(dest, userPref, userVisited);
   }
 
   // When directions are clicked
