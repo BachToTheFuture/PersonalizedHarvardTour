@@ -79,7 +79,26 @@ function updatePage(dest, pref, visited) {
   $('#title').text(dat.title);
   $('#desc').text(dat.desc);
 
-  createCards(dest, pref, visited)
+  createCards(dest, pref, visited);
+
+  // When directions are clicked
+  $('.directions').click(function () {
+    var from = $(this).data('from');
+    var to = $(this).data('dest');
+
+    if (data[from]) {
+      from = data[from].gmap_id;
+    }
+    if (data[to]) {
+      to = data[to].gmap_id;
+    }
+    console.log(from, to);
+    const map = createMap(from, to);
+
+    $('#map-embed').empty();
+    $('#map-embed').append(map);
+    $('#map').modal('show');
+  });
 }
 
 function createMap(from, dest) {
