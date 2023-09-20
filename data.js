@@ -10,7 +10,8 @@ const data = {
       "History": 'John Harvard donated some books, idk',
       "Student Life": 'Please wash your hands! One of the Harvard traditions is for students to pee on the statue...',
     },
-    closest: ['memorial']
+    closest: ['memorial'],
+    gmap_id: '2sThe%20Harry%20Elkins%20Widener%20Memorial%20Library' //'2sJohn%20Harvard%20Statue%2C%20Harvard%20Yard%2C%20Cambridge%2C%20MA%2002138'
   },
   memorial: {
     title: "Memorial Hall",
@@ -22,7 +23,8 @@ const data = {
       "History": 'No idea',
       "Student Life": 'This is a first year dining hall',
     },
-    closest: ['statue']
+    closest: ['statue'],
+    gmap_id: '2sMemorial%20Hall%2C%2045%20Quincy%20St%2C%20Cambridge%2C%20MA%2002138'
   }
 };
 

@@ -15,7 +15,7 @@ function createFactCard(type, text) {
   return test;
 }
 
-function createDestCard(dest) {
+function createDestCard(from, dest) {
   return `
   <div class="col">
     <div class="card shadow-sm">
@@ -25,7 +25,7 @@ function createDestCard(dest) {
 
         <div class="d-flex justify-content-between align-items-center">
           <p class="stop card-text">${data[dest].title}</p>
-          <button type="button" class="btn btn-sm btn-outline-primary">Directions</button>
+          <button data-from="${from}" data-dest="${dest}" type="button" class="directions btn btn-sm btn-outline-primary">Directions</button>
         </div>
       </div>
     </div>
@@ -55,7 +55,7 @@ function createCards(dest, pref) {
     factsheet.append(fact);
   }
   for (next of data[dest].closest) {
-    let stop = createDestCard(next);
+    let stop = createDestCard(dest, next);
     destinations.append(stop);
   }
 }
@@ -67,4 +67,10 @@ function updatePage(dest, pref) {
   $('#desc').text(dat.desc);
 
   createCards(dest, pref)
+}
+
+function createMap(from, dest) {
+  return `
+  <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d1716.511140988909!2d-71.11797861404227!3d42.37505762885719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x89e3774305f6eb89%3A0xa46fba92be1e842b!${from}!3m2!1d42.3744665!2d-71.1172096!4m5!1s0x89e3774400b9ec13%3A0xd71cb81da7859c24!${dest}!3m2!1d42.3759109!2d-71.1148758!5e0!3m2!1sen!2sus!4v1695239062534!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  `;
 }

@@ -17,7 +17,7 @@ $(document).ready(function () {
     }
 
     // Show entrance form
-    $('.modal').modal('show');
+    $('#form').modal('show');
 
     // This is when the user submits their preferences
     $('#submit-form').click(() => {
@@ -32,7 +32,7 @@ $(document).ready(function () {
       localStorage.setItem(key, JSON.stringify(pref));
       userPref = pref;
       updatePage(dest, userPref);
-      $('.modal').modal('hide');
+      $('#form').modal('hide');
     });
   }
 
@@ -40,4 +40,24 @@ $(document).ready(function () {
   if (dest && data[dest]) {
     updatePage(dest, userPref);
   }
+
+  // When directions are clicked
+  $('.directions').click(function () {
+    var from = $(this).data('from');
+    var to = $(this).data('dest');
+
+    if (data[from]) {
+      from = data[from].gmap_id;
+    }
+    if (data[to]) {
+      to = data[to].gmap_id;
+    }
+    console.log(from, to);
+    const map = createMap(from, to);
+
+    $('#map-embed').empty();
+    $('#map-embed').append(map);
+    $('#map').modal('show');
+  });
+
 });
