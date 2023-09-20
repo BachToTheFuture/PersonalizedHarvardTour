@@ -56,7 +56,6 @@ $(document).ready(function () {
       pref: userPref,
       visited: userVisited
     }));
-    print("Visited")
     updatePage(dest, userPref, userVisited);
   }
 
