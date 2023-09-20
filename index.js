@@ -38,7 +38,7 @@ $(document).ready(function () {
         visited: userVisited
       }));
       userPref = pref;
-      updatePage(dest, userPref);
+      updatePage(dest, userPref, userVisited);
       $('#form').modal('hide');
     });
     
