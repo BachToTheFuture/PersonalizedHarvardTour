@@ -12,10 +12,16 @@ $(document).ready(function () {
 
   if (localStorage.getItem(prefKey)) {
     userPref = JSON.parse(localStorage.getItem(prefKey));
-    console.log("PREF", userPref)
 
+    // Get visited destinations too
     if (localStorage.getItem(visitedKey))
       userVisited = JSON.parse(localStorage.getItem(visitedKey));
+
+    // Reset if there are problems
+    if (!Array.isArray(userPref) || !Array.isArray(userVisited)) {
+      userVisited = [];
+      preferenceForm(userPref, userVisited);
+    }
 
     // Check if this is a valid link
     if (dest && data[dest]) {
@@ -26,37 +32,11 @@ $(document).ready(function () {
     }
   }
   else {
-    // Update preference form
-    for (cat of categories) {
-      $("#entrance-form").append(createCheckbox(cat));
-    }
-
-    // Show entrance form
-    $('#form').modal('show');
-
-    // This is when the user submits their preferences
-    $('#submit-form').click(() => {
-      // Collect user preferences
-      let pref = [];
-      $('.cat-check').each((_, cat) => {
-        if ($(cat).is(':checked')) {
-          pref.push(cat.id);
-        }
-      });
-      // Store in browser
-      userPref = pref;
-      localStorage.setItem(prefKey, JSON.stringify(userPref));
-
-      userVisited.push(dest);
-      localStorage.setItem(visitedKey, JSON.stringify(userVisited));
-      
-      updatePage(dest, userPref, userVisited);
-      $('#form').modal('hide');
-    });
-
-    $('#close-form').click(() => {
-      // Show everything if the user does not click on anything.
-      userPref = categories;
-    });
+    preferenceForm(userPref, userVisited);
   }
+
+  // If the user wants to change preference
+  $('#change-pref').click(function () {
+    preferenceForm(userPref, userVisited);
+  });
 });

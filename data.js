@@ -34,7 +34,7 @@ const data = {
     image: "https://i.pinimg.com/736x/0f/b1/c7/0fb1c7d0051339abbebdf8e826aaa4fc--universities-in-cambridge-massachusetts-usa.jpg",
     facts: {
       "Fun Facts": 'The library contains one of the rare, perfect copies of the Gutenberg Bibles.',
-      "Lore": 'Elenor Widenor, the mother of the benefactor of the library, insisted that all graduates must know how to swim to avoid the same fate as her son, who died in the Titanic disaster.',
+      "Lore": 'Elenor Widener, the mother of the benefactor of the library, insisted that all graduates must know how to swim to avoid the same fate as her son, who died in the Titanic disaster.',
       "History": 'The library is named after Harry Elkins Widener, who was a graduate and a book collector who died from the Titanic disaster in 1912. His mother built the library as a memorial to his son.',
       "Student Life": 'The library features a large study space on the second floor (Loker Reading Room), which is probably the quietest study space any student would find on Harvard.',
     },
